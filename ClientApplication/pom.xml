@@ -34,6 +34,12 @@
             <version>6.0.12</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>fredrikkodar</groupId>
+            <artifactId>APIService</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <artifactId>ClientApplication</artifactId>
