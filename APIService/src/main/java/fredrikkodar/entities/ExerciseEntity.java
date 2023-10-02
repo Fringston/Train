@@ -2,6 +2,7 @@ package fredrikkodar.entities;
 
 import jakarta.persistence.*;
 
+//Entity-klass som motsvarar tabellen exercises i databasen
 @Entity
 @Table(name = "exercises")
 public class ExerciseEntity {

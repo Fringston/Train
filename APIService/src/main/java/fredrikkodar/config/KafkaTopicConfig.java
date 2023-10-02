@@ -5,10 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
+//Klass som skapar ämnen i Kafka
 @Configuration
 public class KafkaTopicConfig {
-
-    //Skapar ett ämne för varje tabell i databasen
 
     //Skapar ett ämne för användaruppgifter
     @Bean

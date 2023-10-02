@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+//Klass som konsumerar meddelanden från Kafka och skriver till databasen
 @Service
 public class KafkaConsumerDB {
 
+    //Skapar instanser av repositories för att kunna skriva till databasen
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -21,23 +23,27 @@ public class KafkaConsumerDB {
     private MuscleGroupRepository muscleGroupRepository;
 
 
+    //Metod som konsumerar meddelanden från UserTopic
     @KafkaListener(topics = "UserTopic", groupId = "myGroup2")
     public void writeToUserDB(UserEntity user) {
 
-        //Skicka data till databasen
+        //Skickar data till databasen
         userRepository.save(user);
     }
 
+    //Metod som konsumerar meddelanden från ExerciseTopic
     @KafkaListener(topics = "ExerciseTopic", groupId = "myGroup2")
     public void writeToExerciseDB(ExerciseEntity exercise) {
 
-        //Skicka data till databasen
+        //Skickar data till databasen
         exerciseRepository.save(exercise);
     }
+
+    //Metod som konsumerar meddelanden från MuscleGroupTopic
     @KafkaListener(topics = "MuscleGroupTopic", groupId = "myGroup2")
     public void writeToMuscleGroupDB(MuscleGroupEntity muscleGroup) {
 
-        //Skicka data till databasen
+        //Skickar data till databasen
         muscleGroupRepository.save(muscleGroup);
     }
 }

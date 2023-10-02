@@ -1,6 +1,5 @@
 package fredrikkodar.controller;
 
-
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

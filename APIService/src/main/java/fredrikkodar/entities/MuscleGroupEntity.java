@@ -1,10 +1,10 @@
 package fredrikkodar.entities;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
+//Entity-klass som motsvarar tabellen muscle_groups i databasen
 @Entity
 @Table(name = "muscle_groups")
 public class MuscleGroupEntity {
@@ -15,6 +15,7 @@ public class MuscleGroupEntity {
 
     private String name;
 
+    //En muskelgrupp kan användas i flera övningar, därför har den en en-till-många-relation med ExerciseEntity
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "muscle_group", referencedColumnName = "id")
     List<ExerciseEntity> exercises = new ArrayList<>();

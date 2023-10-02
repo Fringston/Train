@@ -4,7 +4,7 @@ import fredrikkodar.kafka.KafkaConsumer;
 import fredrikkodar.service.UserService;
 import java.util.Scanner;
 
-
+//Klass som hanterar användargränssnittet
 public class UserInterface {
 
     //Skapa en scanner för att läsa in användarinput
@@ -28,7 +28,6 @@ public class UserInterface {
             switch (userChoice) {
                 case 1:
                     logIn();
-                    //displayLoggedInMenu(); ?
                     break;
                 case 2:
                     createAccount();
@@ -127,16 +126,8 @@ public class UserInterface {
             System.out.println("Invalid input. Please choose a password: ");
             newPassword = scanner.nextLine();
         }
-        //Kolla om användarnamnet redan finns i databasen
-        //Om det finns, skriv ut att användarnamnet redan finns och be användaren försöka igen
-        //Om det inte finns, skapa en ny användare
-        /*if (UserService.authenticate(newUsername, newPassword)) {
-            System.out.println("Username already exists. Please try again.");
-        } else {*/
-        // Skapa en ny User och skicka den genom kafka till databasen
         UserService.createUser(newUsername, newPassword);
     }
-    //}
 
     //Metod för att skapa ett träningspass
     public void createWorkout() {
@@ -201,7 +192,7 @@ public class UserInterface {
                         System.out.println("Invalid input. Please choose a valid option.\n");
                 } case 2:
                 System.out.println("Here is a random workout: \n");
-                //getExercise();
+                //KafkaConsumer.getDataFromKafka("ExerciseTopic");
         }
     }
 }

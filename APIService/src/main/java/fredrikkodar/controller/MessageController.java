@@ -1,27 +1,24 @@
 package fredrikkodar.controller;
 
-
 import fredrikkodar.entities.ExerciseEntity;
 import fredrikkodar.entities.MuscleGroupEntity;
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//Klass som hanterar alla inkommande API-anrop från t. ex. Postman eller klientapplikationen.
-//Annotation som talar om att det är en RestController, vilket innebär att den hanterar HTTP-anrop
-//och returnerar svar i JSON-format
+//Klass som hanterar inkommande API-anrop från t. ex. Postman eller klientapplikationen.
+//RestController innebär att den hanterar HTTP-anrop.
 @RestController
 //Annotation som talar om att alla inkommande anrop ska börja med /api/v1/kafka
 @RequestMapping("/api/v1/kafka")
 public class MessageController {
 
-    //Skapa en instans av KafkaProducer
+    //Skapar en instans av KafkaProducer för att kunna skicka meddelanden till Kafka
     private KafkaProducer kafkaProducer;
 
     //Konstruktor som tar emot KafkaProducer
@@ -31,7 +28,7 @@ public class MessageController {
     }
 
 
-    //Testar ny publishUserMessage-metod som chatGPT föreslår
+    //Metod som skickar meddelanden till UserTopic
     @PostMapping("/publishUserMessage")
     public ResponseEntity<String> publishUserMessage (
             @RequestBody UserEntity user) {
@@ -46,7 +43,6 @@ public class MessageController {
     }
 
     //Metod som skickar meddelanden till ExerciseTopic
-    //http:localhost:8080/api/v1/kafka/publishExerciseMessage?message=
     @PostMapping("/publishExerciseMessage")
     public ResponseEntity<String> publishExerciseMessage (
             @RequestBody ExerciseEntity exercise) {
@@ -56,7 +52,6 @@ public class MessageController {
     }
 
     //Metod som skickar meddelanden till MuscleGroupTopic
-    //http:localhost:8080/api/v1/kafka/publishMuscleGroupMessage?message=
     @PostMapping("/publishMuscleGroupMessage")
     public ResponseEntity<String> publishMuscleGroupMessage (
             @RequestBody MuscleGroupEntity muscleGroup) {
