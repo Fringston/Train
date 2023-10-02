@@ -1,11 +1,9 @@
 package fredrikkodar.ui;
 
 import fredrikkodar.service.UserService;
-import org.springframework.stereotype.Component;
-
 import java.util.Scanner;
 
-@Component
+
 public class UserInterface {
 
     //Skapa en scanner för att läsa in användarinput

@@ -1,6 +1,6 @@
 package fredrikkodar.service;
 
-import fredrikkodar.DTO.UserDTO;
+import fredrikkodar.entities.UserEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -15,12 +15,12 @@ public class UserService {
         String authenticationUrl = "http://localhost:8080/api/v1/user/authenticateUser";
 
         // Skapa en instans av UserDTO med användarnamn och lösenord
-        UserDTO userDTO = new UserDTO();
-        userDTO.setName(username);
-        userDTO.setPassword(password);
+        UserEntity user = new UserEntity();
+        user.setName(username);
+        user.setPassword(password);
 
         // Gör en HTTP-POST-förfrågan för att autentisera användaren
-        ResponseEntity<String> response = restTemplate.postForEntity(authenticationUrl, userDTO, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity(authenticationUrl, user, String.class);
 
         // Kolla om autentiseringen lyckades baserat på HTTP-svarskoden
         if (response.getStatusCode().is2xxSuccessful()) {
@@ -42,7 +42,7 @@ public class UserService {
         String createUserUrl = "http://localhost:8080/api/v1/kafka/publishUserMessage";
 
         // Skapa en instans av UserDTO med användarnamn och lösenord
-        UserDTO newUser = new UserDTO();
+        UserEntity newUser = new UserEntity();
         newUser.setName(username);
         newUser.setPassword(password);
 

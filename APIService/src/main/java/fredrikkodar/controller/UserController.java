@@ -1,6 +1,6 @@
 package fredrikkodar.controller;
 
-import fredrikkodar.DTO.UserDTO;
+//import fredrikkodar.DTO.UserDTO;
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 //Klass som hanterar inkommande user-objekt från klientapplikationen
 //och utför CRUD-operationer på databasen
-@RestController
+/*@RestController
 //Annotation som talar om att alla inkommande anrop ska börja med /api/v1/user
 @RequestMapping("/api/v1/user")
 public class UserController {
@@ -44,4 +44,4 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not authenticated");
     }
-}
+}*/

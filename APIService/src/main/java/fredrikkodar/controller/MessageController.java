@@ -1,11 +1,12 @@
 package fredrikkodar.controller;
 
-import fredrikkodar.DTO.UserDTO;
+
 import fredrikkodar.entities.ExerciseEntity;
 import fredrikkodar.entities.MuscleGroupEntity;
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,14 +30,14 @@ public class MessageController {
         this.kafkaProducer = kafkaProducer;
     }
 
+
     //Testar ny publishUserMessage-metod som chatGPT föreslår
     @PostMapping("/publishUserMessage")
     public ResponseEntity<String> publishUserMessage (
-            @RequestBody UserDTO userDTO) {
-        //Konvertera UserDTO till User-entity
-        UserEntity user = new UserEntity();
-        user.setName(userDTO.getName());
-        user.setPassword(userDTO.getPassword());
+            @RequestBody UserEntity user) {
+
+        user.setName(user.getName());
+        user.setPassword(user.getPassword());
         System.out.println(user.getName() + " " + user.getPassword());
 
         //Skicka användaren till Kafka-topic
