@@ -1,5 +1,6 @@
 package fredrikkodar;
 
+import fredrikkodar.kafka.KafkaConsumer;
 import fredrikkodar.service.UserService;
 import fredrikkodar.ui.UserInterface;
 
@@ -8,8 +9,7 @@ public class Main {
 
         System.out.println("Hello world!");
         UserInterface userInterface = new UserInterface();
-        //userInterface.displayMainMenu();
+        userInterface.displayMainMenu();
 
-        UserService.createUser("User31", "3111");
     }
 }

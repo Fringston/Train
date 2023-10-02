@@ -1,5 +1,6 @@
 package fredrikkodar.ui;
 
+import fredrikkodar.kafka.KafkaConsumer;
 import fredrikkodar.service.UserService;
 import java.util.Scanner;
 
@@ -88,11 +89,9 @@ public class UserInterface {
 
             switch (userChoice2) {
                 case 1:
-                    // Uppdatera användaruppgifter
-                    //getAllUsers();
-                    /*KafkaConsumer kafkaConsumer = new KafkaConsumer();
-                    kafkaConsumer.consumeUserTopic("UserTopic");
-                    break;*/
+                    //Se alla användaruppgifter
+                    KafkaConsumer.getDataFromKafka("UserTopic");
+                    break;
                 case 2:
                     // Skapa träningspass
                     createWorkout();
