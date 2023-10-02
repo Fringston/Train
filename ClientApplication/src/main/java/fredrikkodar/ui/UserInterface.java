@@ -90,6 +90,7 @@ public class UserInterface {
             switch (userChoice2) {
                 case 1:
                     //Se alla användaruppgifter
+                    System.out.println("Here are all the current users:");
                     KafkaConsumer.getDataFromKafka("UserTopic");
                     break;
                 case 2:

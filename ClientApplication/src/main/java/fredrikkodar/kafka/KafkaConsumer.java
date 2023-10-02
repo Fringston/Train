@@ -21,9 +21,6 @@ public class KafkaConsumer {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "fetchingGroup");
-        //props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        //props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        //props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.springframework.kafka.support.serializer.JsonDeserializer");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         props.put("spring.json.trusted.packages", "*");
@@ -44,41 +41,13 @@ public class KafkaConsumer {
             if (records.isEmpty()) continue;
             for (ConsumerRecord<String, UserEntity> record : records) {
                 users.add(record.value());
-                //System.out.println(record.value());
-                //System.out.println(record.value().getClass().toString());
-/*
-                //Spara datan tillbaka till ett JSONObject
-                JSONObject fetchData = (JSONObject) new JSONParser().parse(record.value());
-
-                //Skriva ut data
-                System.out.println(fetchData.get("id"));
-                System.out.println(fetchData.get("firstName"));
-                System.out.println(fetchData.get("lastName"));
-
-*/
             }
             break;
         }
 
         for (UserEntity user : users) {
-            System.out.println(user.getName());
+            System.out.println("User: " + user.getName());
         }
-/*
-        while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-            for (ConsumerRecord<String, String> record : records) {
-                System.out.println(record.value());
-
-                //Spara datan tillbaka till ett JSONObject
-                JSONObject fetchData = (JSONObject) new JSONParser().parse(record.value());
-
-                //Skriva ut data
-                System.out.println(fetchData.get("id"));
-                System.out.println(fetchData.get("firstName"));
-                System.out.println(fetchData.get("lastName"));
-            }
-        }*/
-
         return users;
     }
 }
