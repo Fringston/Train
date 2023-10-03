@@ -26,7 +26,7 @@ public class KafkaTests {
     @Test
     @Order(1)
     public void sendToWebAPITest() {
-        //Anropa metod för att skcika den
+        //Anropa metod för att skicka den
         String resp = Main.sendToWebAPI(myObj);
 
         //Jämföra response-värden

@@ -3,9 +3,7 @@ import fredrikkodar.repository.UserRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -37,6 +35,7 @@ public class DatabaseTest {
         System.out.println("After all tests");
     }
 
+    //Test för att skapa en user
     @Test
     @Order(1)
     void createUser() {
@@ -48,11 +47,14 @@ public class DatabaseTest {
         //Spara user till DB
         testUser = userRepository.save(user);
 
+        //Kontrollera att user är sparad
         assertNotNull(userRepository.findById(testUser.getId()).get().getName());
 
+        //Skriv ut ID:t på User
         System.out.println(testUser.getId());
     }
 
+    //Test för att hämta en user
     @Test
     @Order(2)
     void findUserByName() {
@@ -66,6 +68,7 @@ public class DatabaseTest {
         assertEquals("A", fetchedUser.getName());
     }
 
+    //Test för att uppdatera en user
     @Test
     @Order(3)
     void updateUser(){
@@ -76,10 +79,13 @@ public class DatabaseTest {
         //Uppdatera värdet på fetchedUser
         fetchedUser.setName("C");
         userRepository.save(fetchedUser);
+
+        //Kontrollera att namnet är uppdaterat
         assertEquals("C", userRepository.findById(testUser.getId())
                 .get().getName());
     }
 
+    //Test för att ta bort en user
     @Test
     @Order(4)
     void removeUser() {

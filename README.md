@@ -21,7 +21,6 @@ The project is divided into to modules. One works as a Web-API and the other is 
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
 Before you can start this project, you must follow these steps:
 
 - Install Apache Kafka on your local machine.

@@ -26,3 +26,4 @@ public class KafkaTopicConfig {
     public NewTopic muscleGroupTopic() {return TopicBuilder.name("MuscleGroupTopic").build();
     }
 }
+
