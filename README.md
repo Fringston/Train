@@ -68,6 +68,3 @@ I received help and inspiration from the following sources:
 
 
 Go the extra mile and write tests for your application. Then provide examples on how to run them here.
-
-
-<hr><sub>Licens: Apache 2.0 | © 2023 Marcus Medina, Campus Mölndal. Alla rättigheter förbehållna.<br>Du får använda och modifiera detta verk enligt villkoren i Apache License, Version 2.0. Du får inte använda detta verk för kommersiella ändamål utan tillstånd från upphovsmannen.</sub>

@@ -1,3 +1,5 @@
+package fredrikkodar;
+
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.repository.UserRepository;
 import org.junit.jupiter.api.*;
