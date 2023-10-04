@@ -39,7 +39,7 @@ public class KafkaTest {
     @Order(2)
     public void getDataFromKafkaTest() {
         //Anropa metod för att hämta Users från Kafka topic
-        ArrayList<UserEntity> users = kafkaConsumer.getDataFromKafka("UserTopic");
+        ArrayList<UserEntity> users = kafkaConsumer.getUserDataFromKafka("UserTopic");
         UserEntity testUser = users.get(users.size() - 1);
 
         //Kontrollera att User finns i Kafka

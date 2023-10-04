@@ -1,5 +1,6 @@
 package fredrikkodar.kafka;
 
+import fredrikkodar.entities.ExerciseEntity;
 import fredrikkodar.entities.UserEntity;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -18,7 +19,7 @@ import java.util.Properties;
 public class KafkaConsumer {
 
     //Metod som konsumerar meddelanden från UserTopic
-    public static ArrayList<UserEntity> getDataFromKafka(String topicName) {
+    public static ArrayList<UserEntity> getUserDataFromKafka(String topicName) {
 
         //Skapar en Properties instans för att konfigurera Consumer
         Properties props = new Properties();
@@ -56,4 +57,7 @@ public class KafkaConsumer {
         }
         return users;
     }
+   /* public static ExerciseEntity getExerciseDataFromKafka() {
+
+    }*/
 }

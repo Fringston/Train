@@ -96,7 +96,7 @@ public class UserInterface {
                 case 1:
                     //Se alla användaruppgifter
                     System.out.println("Here are all the current users:");
-                    KafkaConsumer.getDataFromKafka("UserTopic");
+                    KafkaConsumer.getUserDataFromKafka("UserTopic");
                     break;
                 case 2:
                     //Skapa träningspass
@@ -200,7 +200,7 @@ public class UserInterface {
                         System.out.println("Invalid input. Please choose a valid option.\n");
                 } case 2:
                 System.out.println("Here is a random workout: \n");
-                //KafkaConsumer.getDataFromKafka("ExerciseTopic");
+                //KafkaConsumer.getExerciseDataFromKafka("ExerciseTopic");
         }
     }
 }

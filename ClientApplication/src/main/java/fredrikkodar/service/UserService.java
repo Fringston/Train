@@ -18,11 +18,9 @@ public class UserService {
         this.restTemplate = restTemplate;
     }
 
-
     //Metod som autentiserar en användare genom att anropa APIService-modulen
     public boolean authenticate(String username, String password) {
         // Skapa en instans av RestTemplate för att göra HTTP-anrop
-
 
         // Skapa en URL för autentiseringsförfrågan
         String authenticationUrl = "http://localhost:8080/api/v1/user/authenticateUser";
