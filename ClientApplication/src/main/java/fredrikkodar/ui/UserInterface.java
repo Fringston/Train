@@ -94,13 +94,15 @@ public class UserInterface {
                     KafkaConsumer.getDataFromKafka("UserTopic");
                     break;
                 case 2:
-                    // Skapa träningspass
+                    //Skapa träningspass
                     createWorkout();
                     break;
                 case 3:
+                    //Avsluta
                     System.out.println("Exiting...");
                     System.exit(0);
                     break;
+                    //Om användaren inte väljer 1, 2 eller 3 så skrivs ett felmeddelande ut
                 default:
                     System.out.println("Invalid input. Please press 1 to update user information, 2 to create a workout or 3 to log out.");
                     break;

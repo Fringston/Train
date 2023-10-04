@@ -15,7 +15,7 @@ public class KafkaTest {
 
 
     private static UserEntity user;
-    private static KafkaConsumer KafkaConsumer;
+    private static KafkaConsumer kafkaConsumer;
 
     @BeforeAll
     static void beforeAll() {
@@ -39,7 +39,7 @@ public class KafkaTest {
     @Order(2)
     public void getDataFromKafkaTest() {
         //Anropa metod för att hämta Users från Kafka topic
-        ArrayList<UserEntity> users = KafkaConsumer.getDataFromKafka("UserTopic");
+        ArrayList<UserEntity> users = kafkaConsumer.getDataFromKafka("UserTopic");
         UserEntity testUser = users.get(users.size() - 1);
 
         //Kontrollera att User finns i Kafka
