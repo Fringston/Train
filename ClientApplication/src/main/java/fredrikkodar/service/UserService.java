@@ -37,20 +37,15 @@ public class UserService {
 
     //Metod som skapar en ny användare genom att anropa APIService-modulen
     //som i sin tur skickar ett meddelande till Kafka
-    public static void createUser(String username, String password) {
+    public static int createUser(UserEntity user) {
         // Skapa en instans av RestTemplate för att göra HTTP-anrop
         RestTemplate restTemplate = new RestTemplate();
 
         // Skapa en URL för create-förfrågan
         String createUserUrl = "http://localhost:8080/api/v1/kafka/publishUserMessage";
 
-        // Skapa en instans av UserEntity med användarnamn och lösenord
-        UserEntity newUser = new UserEntity();
-        newUser.setName(username);
-        newUser.setPassword(password);
-
         // Gör en HTTP-POST-förfrågan för att skapa en ny användare
-        ResponseEntity<String> response = restTemplate.postForEntity(createUserUrl, newUser, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity(createUserUrl, user, String.class);
 
         //Om statuskoden är 200 OK så har användaren skapats, annars inte
         if (response.getStatusCode() == HttpStatus.OK) {
@@ -58,5 +53,6 @@ public class UserService {
         } else {
             System.out.println("User not created");
         }
+        return response.getStatusCodeValue();
     }
 }

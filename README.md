@@ -73,5 +73,4 @@ I received help and inspiration from the following sources:
 
 ## Tests
 
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+The following classes has been tested:

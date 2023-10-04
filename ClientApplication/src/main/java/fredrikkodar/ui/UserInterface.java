@@ -1,5 +1,6 @@
 package fredrikkodar.ui;
 
+import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaConsumer;
 import fredrikkodar.service.UserService;
 import java.util.Scanner;
@@ -126,7 +127,7 @@ public class UserInterface {
             System.out.println("Invalid input. Please choose a password: ");
             newPassword = scanner.nextLine();
         }
-        UserService.createUser(newUsername, newPassword);
+        UserService.createUser(new UserEntity(newUsername, newPassword));
     }
 
     //Metod för att skapa ett träningspass

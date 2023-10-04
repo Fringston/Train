@@ -29,11 +29,10 @@ public class KafkaTest {
     @Order(1)
     public void sendToWebAPITest() {
         //Anropa metod för att skicka User till WebAPI --> Kafka topic
-        UserService.createUser(user.getName(), user.getPassword());
+        int resp = UserService.createUser(user);
 
         //Kontrollera att User finns i Kafka
-        assertEquals();
-
+        assertEquals(resp, 200);
     }
 
     @Test
