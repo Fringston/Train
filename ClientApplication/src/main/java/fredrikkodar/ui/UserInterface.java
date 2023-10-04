@@ -3,10 +3,15 @@ package fredrikkodar.ui;
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaConsumer;
 import fredrikkodar.service.UserService;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.Scanner;
 
 //Klass som hanterar användargränssnittet
 public class UserInterface {
+
+    RestTemplate restTemplate = new RestTemplate();
+    UserService userService = new UserService(restTemplate);
 
     //Skapa en scanner för att läsa in användarinput
     static Scanner scanner = new Scanner(System.in);
@@ -66,10 +71,10 @@ public class UserInterface {
         }
 
         // Kolla om användaren finns i databasen
-        if (UserService.authenticate(username, password)) {
+        if (userService.authenticate(username, password)) {
             // Visa nästa meny efter inloggning
             displayLoggedInMeny();
-        } else if (!UserService.authenticate(username, password)) {
+        } else if (!userService.authenticate(username, password)) {
             System.out.println("Invalid username or password. Please try again.");
         }
     }

@@ -2,16 +2,27 @@ package fredrikkodar.service;
 
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaConsumer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Service
 public class UserService {
 
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public UserService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+
     //Metod som autentiserar en användare genom att anropa APIService-modulen
-    public static boolean authenticate(String username, String password) {
+    public boolean authenticate(String username, String password) {
         // Skapa en instans av RestTemplate för att göra HTTP-anrop
-        RestTemplate restTemplate = new RestTemplate();
+
 
         // Skapa en URL för autentiseringsförfrågan
         String authenticationUrl = "http://localhost:8080/api/v1/user/authenticateUser";
