@@ -78,7 +78,7 @@ The following classes has been tested:
 **Class:** [UserRepository](APIService/src/main/java/fredrikkodar/repository/UserRepository.java)
 **Test:** [DatabaseTest](APIService/src/test/java/fredrikkodar/DatabaseTest.java)
 
-**Classes:** [KafkaConsumer](ClientApplication/src/main/java/fredrikkodar/kafka/KafkaConsumer.java)
+**Classes:** [KafkaConsumer](ClientApplication/src/main/java/fredrikkodar/kafka/KafkaConsumer.java) and
 [UserService](ClientApplication/src/main/java/fredrikkodar/service/UserService.java)
 **Test:** [KafkaTest](ClientApplication/src/test/java/fredrikkodar/kafka/KafkaTest.java)
 
