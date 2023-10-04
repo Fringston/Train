@@ -16,7 +16,15 @@ So I have just focused on getting the basic functionality to work first. As in:
 - Be able to log in.
 - Be able to get all users from the kafka topic.
 
-The project is divided into to modules. One works as a Web-API and the other is the client-app.
+The project is divided into to modules. 
+One acts as a Web-API which has the responsibility to handle all the requests from the client-app and communicate with the kafkaserver and database.
+The other module is the client-application.
+
+When the API-module is started, it will create a kafka topic called UserTopic. This topic will be used to store all the users that are created.
+When a user is created, the user will be sent to the UserTopic. And a consumer will be listening to the topic and will save the user to a database.
+
+There is also another consumer that can be called upon by the user to get all the users from the UserTopic. 
+This consumer will then send all the users back to the user.
 
 
 ## Installation
@@ -29,10 +37,9 @@ Before you can start this project, you must follow these steps:
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
 - Open the project in your IDE.
 - Start the Zookeeper and Kafka server.
+- Change the username and password in the application.properties file in the APIService-module for mySQL to your own.
 - Start the Web-API module.
 - Start the client-app module.
 - Follow the instructions in the terminal to use the app.

@@ -30,9 +30,9 @@ public class MessageController {
 
     //Metod som skickar meddelanden till UserTopic
     @PostMapping("/publishUserMessage")
-    public ResponseEntity<String> publishUserMessage (
-            @RequestBody UserEntity user) {
+    public ResponseEntity<String> publishUserMessage (@RequestBody UserEntity user) {
 
+        //Skapa en ny användare
         user.setName(user.getName());
         user.setPassword(user.getPassword());
         System.out.println(user.getName() + " " + user.getPassword());

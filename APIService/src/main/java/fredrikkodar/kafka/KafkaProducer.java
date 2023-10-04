@@ -28,11 +28,14 @@ public class KafkaProducer {
 
     //Metod som skickar meddelanden till UserTopic i form av UserEntity-objekt
     public void sendUserMessage(UserEntity data) {
+        //Loggar meddelandet
         LOGGER.info(String.format("Message sent %s", data.toString()));
+        //Skapar ett meddelande med User som payload
         Message<UserEntity> message = MessageBuilder
                 .withPayload(data)
                 .setHeader(KafkaHeaders.TOPIC, "UserTopic")
                 .build();
+        //Skickar meddelandet till UserTopic
         kafkaTemplate.send(message);
     }
 

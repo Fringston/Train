@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Optional;
 
-//Klass som hanterar inkommande user-objekt från klientapplikationen
-//och utför CRUD-operationer på databasen
+
+//Klass som hanterar inkommande User/Exercise/MuscleGroup-objekt från klientapplikationen
+//och utför CRUD-operationer på motsvarande tabeller i databasen
 @RestController
 //Annotation som talar om att alla inkommande anrop ska börja med /api/v1/user
 @RequestMapping("/api/v1/user")

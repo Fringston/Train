@@ -14,7 +14,6 @@ public class DatabaseTest {
 
     @Autowired
     private UserRepository userRepository;
-
     static UserEntity testUser;
 
     @BeforeEach
