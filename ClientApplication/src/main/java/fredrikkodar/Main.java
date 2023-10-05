@@ -1,7 +1,5 @@
 package fredrikkodar;
 
-import fredrikkodar.kafka.KafkaConsumer;
-import fredrikkodar.service.UserService;
 import fredrikkodar.ui.UserInterface;
 
 public class Main {
