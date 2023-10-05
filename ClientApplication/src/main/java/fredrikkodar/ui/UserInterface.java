@@ -75,7 +75,7 @@ public class UserInterface {
             // Visa nästa meny efter inloggning
             displayLoggedInMeny();
         } else if (!userService.authenticate(username, password)) {
-            System.out.println("Invalid username or password. Please try again.");
+            System.out.println("In valid username or password. Please tryagain.");
         }
     }
 
