@@ -2,6 +2,7 @@ package fredrikkodar.ui;
 
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaConsumer;
+import fredrikkodar.service.ExerciseService;
 import fredrikkodar.service.UserService;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -50,7 +51,6 @@ public class UserInterface {
         }
     }
 
-
     //Metod för att logga in
     public void logIn() {
         System.out.println("Enter your username: ");
@@ -91,7 +91,7 @@ public class UserInterface {
             System.out.println("\nWelcome!");
             System.out.println("Do you want to: \n");
             System.out.println("1: Get user information");
-            System.out.println("2: Create a workout");
+            System.out.println("2: Get a workout");
             System.out.println("3: Exit");
 
             userChoice2 = scanner.nextInt();
@@ -148,6 +148,8 @@ public class UserInterface {
         System.out.println("Do you want to: \n");
         System.out.println("1: Choose which muscle groups to train");
         System.out.println("2: Get a random workout");
+        System.out.println("3: Add a new exercise to the topic and database");
+        System.out.println("4: Exit");
 
         int workoutChoice = scanner.nextInt();
         scanner.nextLine(); // Läs bort ny rad efter nästa int
@@ -203,9 +205,54 @@ public class UserInterface {
                         break;
                     default:
                         System.out.println("Invalid input. Please choose a valid option.\n");
-                } case 2:
+                }
+
+                case 2:
                 System.out.println("Here is a random workout: \n");
                 //KafkaConsumer.getExerciseDataFromKafka("ExerciseTopic");
+                break;
+
+                case 3:
+                System.out.println("Add a new exercise to the topic and database: \n");
+                    System.out.println("Please enter the name of the exercise: ");
+                    String exerciseName = scanner.nextLine();
+
+                    System.out.println("Please choose the muscle group of the exercise: ");
+                    System.out.println("1: Chest");
+                    System.out.println("2: Back");
+                    System.out.println("3: Legs");
+                    System.out.println("4: Shoulders");
+                    System.out.println("5: Arms");
+                    System.out.println("6: Abs\n");
+
+                    int muscleGroup = scanner.nextInt();
+                    scanner.nextLine(); // Läs bort ny rad efter nästa int
+                    switch (muscleGroup) {
+                        case 1:
+                            String chosenMuscleGroup = "chest";
+                            break;
+                        case 2:
+                            chosenMuscleGroup = "back";
+                            break;
+                        case 3:
+                            chosenMuscleGroup = "legs";
+                            break;
+                        case 4:
+                            chosenMuscleGroup = "shoulders";
+                            break;
+                        case 5:
+                            chosenMuscleGroup = "arms";
+                            break;
+                        case 6:
+                            chosenMuscleGroup = "abs";
+                            break;
+                        default:
+                            System.out.println("Invalid input. Please choose a valid option.\n");
+
+                    }
+
+                //ExerciseService.addNewExercise("exerciseName", "chosenMuscleGroup");
+                break;
         }
     }
 }
