@@ -13,18 +13,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class KafkaTest {
 
-
+    //Skapa instanser av UserEntity och KafkaConsumer som ska användas i testen
     private static UserEntity user;
-    private static KafkaConsumer kafkaConsumer;
 
+    //Skapa en instans av UserEntity som ska användas i testen
     @BeforeAll
-    static void beforeAll() {
+    static void setUp() {
         user = new UserEntity();
         user.setName("NewestTest");
         user.setPassword("NewestTest");
         user.setId(250L);
     }
 
+    //Test för metoden createUser i UserService
     @Test
     @Order(1)
     public void sendToWebAPITest() {
@@ -35,16 +36,17 @@ public class KafkaTest {
         assertEquals(resp, 200);
     }
 
+    //Test för metoden getUserDataFromKafka i KafkaConsumer
     @Test
     @Order(2)
     public void getDataFromKafkaTest() {
         //Anropa metod för att hämta Users från Kafka topic
-        ArrayList<UserEntity> users = kafkaConsumer.getUserDataFromKafka("UserTopic");
+        ArrayList<UserEntity> users = KafkaConsumer.getUserDataFromKafka("UserTopic");
         UserEntity testUser = users.get(users.size() - 1);
 
         //Kontrollera att User finns i Kafka
-        assertEquals( testUser.getName() , user.getName());
-        assertEquals( testUser.getPassword() , user.getPassword());
-        assertEquals( testUser.getId() , user.getId());
+        assertEquals(user.getName(),testUser.getName());
+        assertEquals(user.getPassword(),testUser.getPassword());
+        assertEquals(user.getId(),testUser.getId());
     }
 }

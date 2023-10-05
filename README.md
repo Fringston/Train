@@ -73,13 +73,19 @@ I received help and inspiration from the following sources:
 
 ## Tests
 
-The following classes has been tested:
 
-**Class:** [UserRepository](APIService/src/main/java/fredrikkodar/repository/UserRepository.java)
-**Test:** [DatabaseTest](APIService/src/test/java/fredrikkodar/DatabaseTest.java)
+The **class:** [UserRepository](APIService/src/main/java/fredrikkodar/repository/UserRepository.java)
+is tested in: **[DatabaseTest](APIService/src/test/java/fredrikkodar/DatabaseTest.java)**
 
-**Classes:** [KafkaConsumer](ClientApplication/src/main/java/fredrikkodar/kafka/KafkaConsumer.java) and
+The **class:** [KafkaConsumer](ClientApplication/src/main/java/fredrikkodar/kafka/KafkaConsumer.java) is tested in: **[KafkaTest](ClientApplication/src/test/java/fredrikkodar/kafka/KafkaTest.java)**
+
+The **method:** *createUser* in **class:** 
 [UserService](ClientApplication/src/main/java/fredrikkodar/service/UserService.java)
-**Test:** [KafkaTest](ClientApplication/src/test/java/fredrikkodar/kafka/KafkaTest.java)
+is tested in: **[KafkaTest](ClientApplication/src/test/java/fredrikkodar/kafka/KafkaTest.java)**
 
+The **method** *authenticate* in **class:** [UserService](ClientApplication/src/main/java/fredrikkodar/service/UserService.java)
+is tested in: **[UserServiceTest](ClientApplication/src/test/java/fredrikkodar/service/UserServiceTest.java)**
+
+
+---
 

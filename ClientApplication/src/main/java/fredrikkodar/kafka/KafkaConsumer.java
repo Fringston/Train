@@ -1,6 +1,5 @@
 package fredrikkodar.kafka;
 
-import fredrikkodar.entities.ExerciseEntity;
 import fredrikkodar.entities.UserEntity;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -9,7 +8,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,7 +55,4 @@ public class KafkaConsumer {
         }
         return users;
     }
-   /* public static ExerciseEntity getExerciseDataFromKafka() {
-
-    }*/
 }
