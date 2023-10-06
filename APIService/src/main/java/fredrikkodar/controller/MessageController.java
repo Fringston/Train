@@ -28,7 +28,7 @@ public class MessageController {
     }
 
 
-    //Metod som skickar meddelanden till UserTopic
+    //Metod/handler som skickar meddelanden till UserTopic
     @PostMapping("/publishUserMessage")
     public ResponseEntity<String> publishUserMessage (@RequestBody UserEntity user) {
 
@@ -39,23 +39,27 @@ public class MessageController {
 
         //Skicka användaren till Kafka-topic
         kafkaProducer.sendUserMessage(user);
-        return ResponseEntity.ok("Json message sent to Kafka Topic");
+        return ResponseEntity.ok("Json message sent to UserTopic");
     }
 
-    //Metod som skickar meddelanden till ExerciseTopic
+    //Metod/handler som skickar meddelanden till ExerciseTopic
     @PostMapping("/publishExerciseMessage")
-    public ResponseEntity<String> publishExerciseMessage (
-            @RequestBody ExerciseEntity exercise) {
-        System.out.println("MessageController.publishExerciseMessage: " + exercise.toString());
+    public ResponseEntity<String> publishExerciseMessage (@RequestBody ExerciseEntity exercise) {
+
+        //Skapa en ny övning
+        exercise.setName(exercise.getName());
+        //exercise.setMuscleGroup(exercise.getMuscleGroup()); ???
+        //System.out.println(exercise.getName() + " " + exercise.getMuscleGroup());
+
+        //Skicka övningen till Kafka-topic
         kafkaProducer.sendExerciseMessage(exercise);
-        return ResponseEntity.ok("Json message sent to Kafka Topic");
+        return ResponseEntity.ok("Json message sent to ExerciseTopic");
     }
 
-    //Metod som skickar meddelanden till MuscleGroupTopic
+    //Metod/handler som skickar meddelanden till MuscleGroupTopic
     @PostMapping("/publishMuscleGroupMessage")
-    public ResponseEntity<String> publishMuscleGroupMessage (
-            @RequestBody MuscleGroupEntity muscleGroup) {
+    public ResponseEntity<String> publishMuscleGroupMessage (@RequestBody MuscleGroupEntity muscleGroup) {
         kafkaProducer.sendMuscleGroupMessage(muscleGroup);
-        return ResponseEntity.ok("Json message sent to Kafka Topic");
+        return ResponseEntity.ok("Json message sent to MuscleGroupTopic");
     }
 }

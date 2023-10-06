@@ -38,6 +38,5 @@ public class ExerciseService {
         }
         return response.getStatusCodeValue();
     }
-    }
-
 }
+
