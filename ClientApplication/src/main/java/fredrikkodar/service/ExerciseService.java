@@ -19,7 +19,7 @@ public class ExerciseService {
 
     //Metod som skapar en ny övning genom att anropa APIService-modulen
     //som i sin tur skickar ett meddelande till Kafka
-    public static int addNewExercise(ExerciseEntity exercise) {
+    public static int addExerciseToTopic(ExerciseEntity exercise) {
 
         // Skapa en instans av RestTemplate för att göra HTTP-anrop
         RestTemplate restTemplate = new RestTemplate();
@@ -32,9 +32,9 @@ public class ExerciseService {
 
         //Om statuskoden är 200 OK så har användaren skapats, annars inte
         if (response.getStatusCode() == HttpStatus.OK) {
-            System.out.println("Exercise created");
+            System.out.println("Exercise added");
         } else {
-            System.out.println("Exercise not created");
+            System.out.println("Exercise not added");
         }
         return response.getStatusCodeValue();
     }
