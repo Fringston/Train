@@ -18,6 +18,8 @@ So I have just focused on getting the basic functionality to work first. As in:
 
 The project is divided into to modules. 
 One acts as a Web-API which has the responsibility to handle all the requests from the client-app and communicate with the kafkaserver and database.
+This module uses Spring Boot as a framework.
+
 The other module is the client-application which handles the interaction with the user.
 
 When the API-module is started, it will create a kafka topic called UserTopic. This topic will be used to store all the users that are created.
@@ -32,6 +34,7 @@ This consumer will then send all the users back to the user.
 Before you can start this project, you must follow these steps:
 
 - Install Apache Kafka on your local machine.
+- Install mySQL on your local machine.
 - Clone this repository to your local machine.
 
 

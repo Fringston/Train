@@ -26,6 +26,7 @@ public class KafkaProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
+
     //Metod som skickar meddelanden till UserTopic i form av UserEntity-objekt
     public void sendUserMessage(UserEntity data) {
         //Loggar meddelandet
@@ -41,21 +42,27 @@ public class KafkaProducer {
 
     //Metod som skickar meddelanden till ExerciseTopic i form av ExerciseEntity-objekt
     public void sendExerciseMessage(ExerciseEntity data) {
+        //Loggar meddelandet
         LOGGER.info(String.format("Message sent %s", data.toString()));
+        //Skapar ett meddelande med Exercise som payload
         Message<ExerciseEntity> message = MessageBuilder
                 .withPayload(data)
                 .setHeader(KafkaHeaders.TOPIC, "ExerciseTopic")
                 .build();
+        //Skickar meddelandet till ExerciseTopic
         kafkaTemplate.send(message);
     }
 
     //Metod som skickar meddelanden till MuscleGroupTopic i form av MuscleGroupEntity-objekt
     public void sendMuscleGroupMessage(MuscleGroupEntity data) {
+        //Loggar meddelandet
         LOGGER.info(String.format("Message sent %s", data.toString()));
+        //Skapar ett meddelande med MuscleGroup som payload
         Message<MuscleGroupEntity> message = MessageBuilder
                 .withPayload(data)
                 .setHeader(KafkaHeaders.TOPIC, "MuscleGroupTopic")
                 .build();
+        //Skickar meddelandet till MuscleGroupTopic
         kafkaTemplate.send(message);
     }
 }
