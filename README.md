@@ -70,7 +70,7 @@ I received help and inspiration from the following sources:
 
 ## License
 
-[MIT License](https://choosealicense.com/licenses/mit/).
+[MIT License](https://choosealicense.com/licenses/mit/)
 
 ---
 
