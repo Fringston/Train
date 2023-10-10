@@ -146,9 +146,9 @@ public class UserInterface {
     public void createWorkout() {
         System.out.println("Create a workout.");
         System.out.println("Do you want to: \n");
-        System.out.println("1: Choose which muscle groups to train");
-        System.out.println("2: Get a random workout");
-        System.out.println("3: Add a new exercise to the topic and database");
+        System.out.println("1: Choose muscle groups");
+        System.out.println("2: Get a random exercise");
+        System.out.println("3: Add a new exercise");
         System.out.println("4: Exit");
 
         int workoutChoice = scanner.nextInt();
