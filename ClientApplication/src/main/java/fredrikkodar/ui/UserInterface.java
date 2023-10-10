@@ -227,9 +227,10 @@ public class UserInterface {
 
                     int muscleGroup = scanner.nextInt();
                     scanner.nextLine(); // Läs bort ny rad efter nästa int
+                    String chosenMuscleGroup = "";
                     switch (muscleGroup) {
                         case 1:
-                            String chosenMuscleGroup = "chest";
+                            chosenMuscleGroup = "chest";
                             break;
                         case 2:
                             chosenMuscleGroup = "back";
