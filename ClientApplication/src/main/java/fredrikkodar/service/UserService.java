@@ -47,6 +47,7 @@ public class UserService {
     //Metod som skapar en ny användare genom att anropa APIService-modulen
     //som i sin tur skickar ett meddelande till Kafka
     public static int createUser(UserEntity user) {
+
         // Skapa en instans av RestTemplate för att göra HTTP-anrop
         RestTemplate restTemplate = new RestTemplate();
 

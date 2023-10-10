@@ -1,5 +1,6 @@
 package fredrikkodar.ui;
 
+import fredrikkodar.entities.ExerciseEntity;
 import fredrikkodar.entities.UserEntity;
 import fredrikkodar.kafka.KafkaConsumer;
 import fredrikkodar.service.ExerciseService;
@@ -7,6 +8,7 @@ import fredrikkodar.service.UserService;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //Klass som hanterar användargränssnittet
@@ -30,6 +32,7 @@ public class UserInterface {
             System.out.println("2. Create an account");
             System.out.println("3. Exit");
 
+            try {
             int userChoice = scanner.nextInt();
             scanner.nextLine(); // Läs bort ny rad efter nästa int
 
@@ -44,9 +47,10 @@ public class UserInterface {
                     System.out.println("Exiting...");
                     System.exit(0);
                     break;
-                default:
-                    System.out.println("Invalid input. Please press 1 to log in, 2 to create an account or 3 to exit.\n");
-                    break;
+            }
+        } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please press 1 to log in, 2 to create an account or 3 to exit.\n");
+                scanner.nextLine();
             }
         }
     }
@@ -91,7 +95,7 @@ public class UserInterface {
             System.out.println("\nWelcome!");
             System.out.println("Do you want to: \n");
             System.out.println("1: Get user information");
-            System.out.println("2: Get a workout");
+            System.out.println("2: Workout!");
             System.out.println("3: Exit");
 
             userChoice2 = scanner.nextInt();
@@ -144,7 +148,6 @@ public class UserInterface {
 
     //Metod för att skapa ett träningspass
     public void createWorkout() {
-        System.out.println("Create a workout.");
         System.out.println("Do you want to: \n");
         System.out.println("1: Choose muscle groups");
         System.out.println("2: Get a random exercise");
@@ -213,7 +216,7 @@ public class UserInterface {
                 break;
 
                 case 3:
-                System.out.println("Add a new exercise to the topic and database: \n");
+                System.out.println("Add a new exercise! \n");
                     System.out.println("Please enter the name of the exercise: ");
                     String exerciseName = scanner.nextLine();
 
@@ -250,8 +253,8 @@ public class UserInterface {
                             System.out.println("Invalid input. Please choose a valid option.\n");
 
                     }
-
-                //ExerciseService.addNewExercise("exerciseName", "chosenMuscleGroup");
+                    ExerciseEntity newExercise = new ExerciseEntity(exerciseName);
+                ExerciseService.addNewExercise(newExercise);
                 break;
         }
     }

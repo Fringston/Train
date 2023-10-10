@@ -49,7 +49,7 @@ public class MessageController {
         //Skapa en ny övning
         exercise.setName(exercise.getName());
         //exercise.setMuscleGroup(exercise.getMuscleGroup()); ???
-        //System.out.println(exercise.getName() + " " + exercise.getMuscleGroup());
+        System.out.println(exercise.getName());
 
         //Skicka övningen till Kafka-topic
         kafkaProducer.sendExerciseMessage(exercise);
