@@ -52,13 +52,13 @@ public class UserInterface {
     }
 
     //Metod för att visa menyn efter inloggning
-    public void displayLoggedInMeny() {
+    public void displayLoggedInMenu() {
         int userChoice;
         do {
             System.out.println("\nWelcome!");
             System.out.println("Do you want to: \n");
             System.out.println("1: Get user information");
-            System.out.println("2: Workout!");
+            System.out.println("2: Train");
             System.out.println("3: Exit");
 
             userChoice = scanner.nextInt();
@@ -72,7 +72,7 @@ public class UserInterface {
                 }
                 case 2 ->
                     //Skapa träningspass
-                        workout();
+                        displayTrainMenu();
                 case 3 -> {
                     //Avsluta
                     System.out.println("Exiting...");
@@ -131,7 +131,7 @@ public class UserInterface {
             // Kolla om användaren finns i databasen
             if (userService.authenticate(username, password)) {
                 // Visa nästa meny efter inloggning
-                displayLoggedInMeny();
+                displayLoggedInMenu();
             } else {
                 System.out.println("Invalid username or password. Please try again.");
             }
@@ -141,7 +141,7 @@ public class UserInterface {
     }
 
     //Metod för att hantera övningar och muskelgrupper
-    public void workout() {
+    public void displayTrainMenu() {
         System.out.println("Do you want to: \n");
         System.out.println("1: Choose muscle groups");
         System.out.println("2: Get a random exercise");
@@ -163,7 +163,7 @@ public class UserInterface {
             }
             case 0 ->
                 //Använder rekursion för att gå tillbaka till föregående meny
-                    displayLoggedInMeny();
+                    displayLoggedInMenu();
         }
     }
 
@@ -216,41 +216,40 @@ public class UserInterface {
         int muscleGroupChoice = scanner.nextInt();
         scanner.nextLine(); // Läs bort ny rad efter nästa int
 
-
         switch (muscleGroupChoice) {
             case 1 -> {
                 System.out.println("You chose to train chest!");
                 System.out.println("Here is your workout: \n");
             }
-            //getWorkout("chest");
+            //getExercise("chest");
             case 2 -> {
                 System.out.println("You chose to train back!");
                 System.out.println("Here is your workout: \n");
             }
-            //getWorkout("back");
+            //getExercise("back");
             case 3 -> {
                 System.out.println("You chose to train legs!");
                 System.out.println("Here is your workout: \n");
             }
-            //getWorkout("legs");
+            //getExercise("legs");
             case 4 -> {
                 System.out.println("You chose to train shoulders!");
                 System.out.println("Here is your workout: \n");
             }
-            //getWorkout("shoulders");
+            //getExercise("shoulders");
             case 5 -> {
                 System.out.println("You chose to train arms!");
                 System.out.println("Here is your workout: \n");
             }
-            //getWorkout("arms");
+            //getExercise("arms");
             case 6 -> {
                 System.out.println("You chose to train abs!");
                 System.out.println("Here is your workout: \n");
             }
-            //getWorkout("abs");
+            //getExercise("abs");
             case 0 ->
                 //Använder rekursion för att gå tillbaka till föregående meny
-                    workout();
+                    displayTrainMenu();
             default -> System.out.println("Invalid input. Please choose a valid option.\n");
         }
     }
